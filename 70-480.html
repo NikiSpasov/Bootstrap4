@@ -1,0 +1,117 @@
+<!DOCTYPE html> 
+<html> 
+    <head>
+        <meta charset="utf-8"/>
+        <title></title>
+        <script>
+            window.onload = function () { 
+
+                var element = document.getElementById("outerDiv")
+                .insertBefore(
+                    document.createElement("article"), 
+                    document.getElementById("innerDiv"));
+                    element.innerText = "My new <article> element";
+
+                    // var drawingSurface = document.getElementById("drawingSurface"); 
+                    // var ctxt = drawingSurface.getContext("2d"); ctxt.lineWidth = 3; ctxt.rect(150, 150, 200, 125);
+                    // var gradient =
+                    // ctxt.createLinearGradient(150, 150, 200, 125);
+                    //  gradient.addColorStop(0, "Black"); 
+                    //  gradient.addColorStop(0.5, "Gray");
+                    // gradient.addColorStop(1,"White"); 
+                    // ctxt.fillStyle = gradient;
+                    //  ctxt.fill(); ctxt.stroke();
+
+                    //  var drawingSurface = document.getElementById("drawingSurface");
+                    //  var ctxt = drawingSurface.getContext("2d"); 
+                    //  var img = new Image(); 
+                    //  img.src = "./Glozzom/img/person3.jpg";
+                    //  img.onload = function () { ctxt.drawImage(img, 0, 0); ctxt.stroke(); }
+
+                     var drawingSurface = document.getElementById("drawingSurface"); var ctxt = drawingSurface.getContext("2d"); ctxt.strokeText("1. Text with default font", 100, 100); 
+
+
+           
+            }
+           
+            function Red(evt) {
+               var circle = evt.target;
+               circle.setAttribute("style", "fill: red"); 
+            }
+             
+            function Green(evt) { 
+               var circle = evt.target;
+               circle.setAttribute("style", "fill: green"); 
+            }
+    </script>
+        <style>
+            canvas {
+                border: 1px solid black;
+            }
+        </style>
+
+    </head>
+<body>
+ <div id="outerDiv">
+     <p class='mainPara'>Main Paragraph</p>
+     <ul>
+         <li>First List Item</li>
+         <li>Second List Item</li>
+         <li>Third List Item</li>
+         <li>Fourth List Item</li>
+     </ul>
+     <div id="innerDiv">
+         <p class='subPara' id='P1'>Paragraph 1</p>
+         <p class='subPara' id='P2'>Paragraph 2</p>
+         <p class='subPara' id='P3'>Paragraph 3</p>
+         <p class='subPara' id='P4'>Paragraph 4</p>
+     </div>
+     <table>
+         <canvas 
+            id="drawingSurface" 
+            width="600" 
+            height="400"> Your browser does not support HTML5. 
+        </canvas>
+
+        <svg>
+            <circle id="Circle" 
+            cx="50" 
+            cy="50" 
+            r="50" 
+            fill="green" 
+            onmouseover="Red(evt)" 
+            onmouseout="Green(evt)" /> 
+        </svg>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/-NsTal8aSnY" 
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+        </iframe>
+         <tr>
+             <td>Row 1 </td>
+         </tr>
+         <tr>
+             <td>Row 2 </td>
+         </tr>
+         <tr>
+             <td>Row 3 </td>
+         </tr>
+         <tr>
+             <td>Row 4 </td>
+         </tr>
+         <tr>
+             <td>Row 5 </td>
+         </tr>
+     </table> 
+    <svg>
+      
+        <circle id="redLight" cx="129" cy="145" r="25" fill="red" />
+        <circle id="amberLight" cx="129" cy="205" r="25" fill="yellow" />
+        <circle id="greenLight" cx="129" cy="265" r="25" fill="green" />
+      
+    </svg>
+     <input type="text" /><input type="submit" value="Submit" />
+ </div>
+    
+</body>
+</html>

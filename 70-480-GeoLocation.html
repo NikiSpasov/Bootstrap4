@@ -1,0 +1,26 @@
+<!DOCTYPE html manifest="webApp.appcache">
+<script>
+  window.onload = function () {
+    debugger;
+    let geoLocator = window.navigator.geolocation;
+    let currentPossition = geoLocator.getCurrentPosition(
+      (result) => {
+        window.alert('Current possition: ' + JSON.stringify(result));
+      },
+      (error) => {
+        window.alert('Error: ' + error);
+      }, () => {
+        return {
+              enableHighAccuracy: true,
+              timeout: 45000
+        }
+      }
+    )
+  }
+</script>
+
+<body>
+
+</body>
+
+</html>

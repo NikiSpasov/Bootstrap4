@@ -1,0 +1,17 @@
+<!DOCTYPE html manifest="webApp.appcache">
+<script>
+  window.onload = function () {
+    debugger;
+    let appCache = window.applicationCache;
+    appCache.oncached = function (e) {
+      alert("cache successfully downloaded.");
+    };
+    appCache.onupdateready = function (e) {
+      appCache.swapCache();
+    };
+  }
+</script>
+<body>
+
+</body>
+</html>
