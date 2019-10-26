@@ -1,18 +1,19 @@
 <!DOCTYPE html manifest="webApp.appcache">
 <script>
   window.onload = function () {
-    debugger;
+    let sp = document.createElement('p');
     let geoLocator = window.navigator.geolocation;
     let currentPossition = geoLocator.getCurrentPosition(
       (result) => {
-        window.alert('Current possition: ' + JSON.stringify(result));
+        sp.innerText = `Current possition: Latitude: ${result.coords.latitude} Longitude: ${result.coords.longitude}`;
+        document.getElementById('geoLocation').appendChild(sp);
       },
       (error) => {
-        window.alert('Error: ' + error);
+        window.alert('Error: ' + error.code + 'message: ' + error.message);
       }, () => {
-        return {
-              enableHighAccuracy: true,
-              timeout: 45000
+        {        
+          enableHighAccuracy: true;
+          timeout: 45000
         }
       }
     )
@@ -20,7 +21,7 @@
 </script>
 
 <body>
-
+<div id="geoLocation"></div>
 </body>
 
 </html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function Book() {}
+
+      function Book(title, length, author) {
+        this.title = title;
+        this.Length = length;
+        this.author = author;
+      }
+
+      Book.prototype = {
+        ISBN: '',
+        Length: -1,
+        genre: '',
+        covering: '',
+        author: '',
+        currentPage: 0,
+        title: '',
+
+        flipTo: function FlipToAPage(pNum) {
+          this.currentPage = pNum;
+        },
+
+        turnPageForward: function turnForward() {
+          this.flipTo(this.currentPage++);
+        },
+
+        turnPageBackward: function turnBackward() {
+          this.flipTo(this.currentPage--);
+        }
+      };
+
+      var books = new Array(new Book(), new Book());
+
+      function PopUpBook() {
+        Book.call(this);
+      }
+      
+      PopUpBook.prototype = Book.prototype;
+      PopUpBook.prototype.hasSound = false;
+      PopUpBook.prototype.showPopUp = function ShowPop() {};
+
+      window.alert(books[1]);
+    </script>
+  </head>
+
+  <body>
+    <div id="geoLocation"></div>
+  </body>
+</html>
