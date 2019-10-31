@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<style>
+  #outer {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+  }
+
+  #middle {
+    width: 50%;
+    height: 50%;
+    position: relative;
+    top: 25%;
+    left: 25%;
+    background-color: green;
+  }
+
+  #inner {
+    width: 50%;
+    height: 50%;
+    position: relative;
+    top: 25%;
+    left: 25%;
+    background-color: blue;
+  }
+
+  .scale {
+    transform: scale(1.5);
+  }
+
+  .dropped {
+    width: 50%;
+    height: 50%;
+    position: relative;
+    top: 25%;
+    left: 25%;
+    background-color: black;
+  }
+
+  .over {
+    transform: scale(1.1);
+  }
+
+  .bucket {
+    width: 100px;
+    height: 100px;
+    margin: 10px 10px 10px 10px;
+    position: absolute;
+  }
+
+  .chip {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+  }
+
+  div:first-of-type {
+    background-color: red;
+  }
+
+  div:nth-of-type(2) {
+    background-color: green;
+    left: 25%;
+  }
+
+  div:nth-of-type(3) {
+    background-color: blue;
+    left: 50%;
+  }
+
+  #chip {
+    background-color: black;
+    width: 50px;
+    height: 50px;
+  }
+
+  .begin {
+    position: absolute;
+    left: 150px;
+    top: 150px;
+  }
+</style>
+<script>
+  // function onloadHandler() {
+  // alert("body loaded!")
+  // }
+
+  //window.onload = () => alert("body loaded!")
+
+  // window.addEventListener("load", onloadHandler, false);
+  // window.addEventListener("load", onloadHandler2, false);
+  // window.addEventListener("load", onloadHandler3, false);
+
+  // window.removeEventListener("load", onloadHandler2, false);
+
+
+  // function onloadHandler() {
+  //   alert("hello event 1.");
+  // }
+
+  // function onloadHandler2() {
+  //   alert("hello event 2.");
+  // }
+
+  // function
+  // onloadHandler3() {
+  //   alert("hello event 3.");
+  // }
+
+  window.onload = function () {
+    // document.getElementById("firstNameText").focus();
+    // document.getElementById("firstNameText").addEventListener("blur",
+    //   function () {
+    //     if (this.value.length < 5) {
+    //       document.getElementById("ruleViolation").value = 'First Name is required to be 5 letters.';
+    //       document.getElementById("ruleViolation").style.color = 'red';
+    //       this.focus();
+    //     }
+    //   });
+
+    // function rangeChangeEvent() {
+    //   document.getElementById("rangeValue").innerText = this.value;
+    //   document.getElementById("aText").value = this.value;
+
+    // }
+
+    // document.onkeydown = function () {
+    //   if (window.event.ctrlKey && String.fromCharCode(window.event.keyCode) == 'F')
+    //     document.getElementById("test").focus();
+    //   if (window.event.ctrlKey &&
+    //     String.fromCharCode(window.event.keyCode) == 'L') document.getElementById("lastNameText").focus();
+    //   return false;
+    // }
+
+
+
+
+    // var a = document.getElementById("aLink"); 
+    // a.onclick = OverrideAnchorClick; 
+    // } 
+    // function OverrideAnchorClick() { 
+    // alert("Hey man :)")
+    // window.event.returnValue = false; //or return false
+    // };
+    // document.getElementById("outer").addEventListener("click", outerDivClick, false);
+    // document.getElementById("middle").addEventListener("click", middleDivClick, false);
+    // document.getElementById("inner").addEventListener("click", innerDivClick, false);
+    // document.getElementById("clearButton").addEventListener("click", clearList);
+
+    //   function outerDivClick() {
+    //     appendText("outer Div Clicked");
+    //   }
+
+    //   function middleDivClick() {
+    //     appendText("middle Div Clicked");
+    //   }
+
+    //   function innerDivClick() {
+    //     appendText("inner Div Clicked ");
+    //     window.event.cancelBubble = true;
+    //   }
+
+    //   function appendText(s) {
+    //     var li = document.createElement("li");
+    //     li.innerText = s;
+    //     document.getElementById("eventOrder").appendChild(li);
+    //   }
+
+    //   function clearList() {
+    //     var ol = document.createElement("ol");
+    //     ol.id = "eventOrder";
+    //     document.getElementById("bod").replaceChild(ol, document.getElementById("eventOrder"));
+    //   }
+
+    //   document.getElementById("yellowBox").addEventListener("mouseenter", yellowBoxEnter);
+    //   document.getElementById("yellowBox").addEventListener("mouseleave", yellowBoxLeave);
+    // }
+
+    // function yellowBoxEnter() {
+    //   this.classList.add("scale");
+    // }
+
+    // function yellowBoxLeave() {
+    //   this.classList.remove("scale");
+    // }
+
+    // var chip = document.getElementById("chip");
+
+    // chip.addEventListener("dragstart", function () {
+    //   window.event.dataTransfer.setData("Text", this.id);
+    // })
+
+    // var b1 = document.getElementById("bucket1");
+    // b1.addEventListener("dragenter", function () {
+    //   b1.classList.add("over");
+    //   window.event.returnValue = false;
+    // });
+    // b1.addEventListener("dragleave", function () {
+    //   b1.classList.remove("over");
+    // });
+    // b1.addEventListener("dragover", function () {
+    //   window.event.returnValue = false;
+    // });
+    // b1.addEventListener("drop",
+    //   function () {
+    //     window.event.returnValue = false;
+    //     var data = event.dataTransfer.getData("Text");
+    //     var d =
+    //       document.getElementById(data);
+    //     d.classList.remove("begin");
+    //     d.classList.add("dropped");
+    //     this.appendChild(d);
+    //   });
+
+    myEvent = new CustomEvent("anAction", {
+      detail: {
+        description: "a description of the event",
+        timeofevent: new
+        Date(),
+        eventcode: 2
+      },
+      bubbles: true,
+      cancelable: true
+    });
+
+    document.addEventListener("anAction", customEventHandler);
+
+    document.dispatchEvent(myEvent);
+
+    function customEventHandler() {
+      alert(window.event.detail.description);
+    }
+  }
+</script>
+
+<body id="body">
+  <!-- <div id="outer">
+    <div id="middle">
+      <div id="inner"> </div>
+    </div>
+  </div>
+  <ol id="eventOrder"> </ol>
+  <button type="button" id="clearButton">Clear</button> -->
+  <input id="firstNameText" type="text" />
+  <input id="ruleViolation" type="text" />
+  <input id="test" type="text" />
+  <div id="outputText"></div>
+  <div id="yellowBoxClick">
+    <a href="">Click me!</a>
+  </div>
+  <div id="yellowBox" style="min-width: 150px; width: 50%;height:50%;margin: 0 auto; background-color:yellow;">
+    sdddddddddddddddddddddddddd</div>
+
+  <!-- <input id="aRange" type="range" max="200" min="0" value="0" />
+  <div id="rangeValue"></div> -->
+
+  <div id="chip" draggable="true" class="chip"></div>
+  <div id="bucket1" class="bucket">aaaaaaaaaaaaaaa</div>
+  <div id="bucket2" class="bucket">ccccccccccccccccccc</div>
+  <div id="bucket3" class="bucket">vvvvvvvvvvvvvvvvvvv</div>
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<head>
+  <script>
+    // window.onload = () => {
+    //   try {
+    //     document.doSomething();
+    //   } catch (e) {
+    //     alert(`цЪ, не щЪ Message: ${e.message} Number: ${e.number} Name: ${e.name}`)
+
+    //   } finally {
+    //     alert('E breee, finished!')
+    //   }
+    // }
+
+    var ball = {
+      x: -1,
+      y: -1,
+      draw: function DrawBall(c) {
+        if (this.x < 0) throw new Error(25, "Invalid X coordinate");
+      }
+    }
+    window.onload = function () {
+      try {
+        var canvas = document.getElementById("myCanvas");
+        var context = canvas.getContext("2d");
+        ball.draw(context);
+      } catch (e) {
+        alert(e.message);
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <canvas id="myCanvas">
+  </div>
+</body>
+
+</html>

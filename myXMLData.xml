@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Person> 
+  <firstName>Rick</firstName>
+  <lastName>Delorme</lastName>
+  <hairColor>Brown</hairColor>
+  <eyeColor>Brown</eyeColor>
+</Person>

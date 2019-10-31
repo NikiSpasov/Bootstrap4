@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<head>
+  <script>
+    // var jsonPersonFormat = {
+    //   firstName: "Rick",
+    //   lastName: "Delorme",
+    //   hairColor: "brown",
+    //   eyeColor: "brown"
+    // };
+    // var xmlPersonFormatElements = 
+    // <Person> 
+    //   <firstName>Rick</firstName>
+    //   <lastName>Delorme</lastName>
+    //   <hairColor>Brown</hairColor>
+    //   <eyeColor>Brown</eyeColor>
+    // </Person>;
+    // var xmlWithAtt = '<Person firstname="Rick" lastName="Delorme" hairColor="Brown" eyeColor="Brown" />';
+
+    window.onload = function () {
+
+
+      let test = document.getElementById("btnGetXMLData");
+      test.onclick = () => {
+        var XMLHTTPReadyState_COMPLETE = 4;
+
+        var xReq = new XMLHttpRequest();
+        xReq.open("GET", "./myXMLData.xml", true);
+        xReq.timeout = 2000;
+        xReq.ontimeout = function () {
+           document.getElementById("results").value = "Request Timed out";
+        }
+        xReq.onreadystatechange = function (e) {
+          if (xReq.readyState == XMLHTTPReadyState_COMPLETE) {
+            if (xReq.status =
+              "200") {
+              document.getElementById("results").value = xReq.response;
+            } else {
+              document.getElementById("results").value = xReq.statusText;
+            }
+          }
+        }
+        xReq.send = () => null;
+        document.getElementById("results").innerText(xReq.response);
+      };
+    };
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <button id="btnGetXMLData">GET XML</button>
+    <input type="text" id="results">
+  </div>
+</body>
+
+</html>
