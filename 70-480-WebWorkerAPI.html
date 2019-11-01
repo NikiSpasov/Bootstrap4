@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
   <script>
     window.requestAnimFrame = (function (callback) {
@@ -67,9 +68,11 @@
           alert(err.message + err.filename + err.lineno);
         }
         worker.postMessage("");
-        document.getElementById("stopWorker").onclick = function () { worker.terminate();
+        document.getElementById("stopWorker").onclick = function () {
+          worker.terminate();
+        }
+
       }
-      
     }
 
     function increaseSpeed() {
@@ -163,6 +166,5 @@
   <input id="stopWorker" type="button" value="Stop Work" />
   <input id="speedy" type="range" min="0" max="10" value="10" style="position:relative; visibility:hidden;" step="1" />
 </body>
-
 
 </html>
