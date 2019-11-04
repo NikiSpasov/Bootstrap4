@@ -8,6 +8,14 @@
     xReq.open("POST", "/ReceiveXMLData.aspx", false);
     xReq.responseType
     xReq.send(xmlData);
+    var person = { 
+      FirstName: "Rick",
+      HairColor: "Brown"  };
+    var req = new XMLHttpRequest(); 
+    req.open("GET", "MyJsonData.json", false); 
+    req.send(null);  
+    var jsonPerson = JSON.parse(req.responseText);
+
   </script> 
 </head>
 
