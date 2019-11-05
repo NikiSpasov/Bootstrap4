@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 
 <head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+    integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
   <style>
     h1 {
       color: #00FF00;
@@ -33,13 +35,69 @@
       src: url('fonts/Ariandi.ttf');
     }
 
-    div {
-      border: 2px solid black;
+    #shadowDiv {
+      border: 1px solid red;
+      position: absolute;
+      left: 60rem;
+      top: 20rem;
+      width: 200px;
+      height: 200px;
+      border: solid 1px black;
+      box-shadow: 15px 15px;
+      /* 30px 30px */
+      /*from left to righ padding (h-position), top to bottom padding (y-position), blur, spread */
+      box-shadow: inset;
+      color: black;
     }
 
     textarea {
       hyphens: auto;
     }
+
+    body {
+
+      color: white;
+      /* background-image: */
+      /* url('https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); */
+      background: linear-gradient(to left, rgb(0, 255, 0), rgb(255, 0, 0));
+      background: linear-gradient(to bottom left, rgb(0, 255, 0), purple, blue, rgb(255, 0, 0));
+      clip: rect(25px, 50px, 50px, 25px);
+    }
+
+    img {
+      opacity: 0.5;
+    }
+
+    #positioningAbsolute {
+      position: absolute;
+      left: 100px;
+      top: 400px;
+    }
+
+    #positioningFixed {
+      position: fixed;
+      top: 1rem;
+      left: 3rem;
+    }
+
+    img.leftShoe {
+      float: left;
+      left: 215px;
+      top: 100px;
+      height: 50px;
+      width: 50px;
+    }
+
+
+    img.rightShoe {
+      float: right;
+      left:
+        215px;
+      top: 100px;
+      height: 50px;
+      width: 50px;
+    }
+
   </style>
   <script>
   </script>
@@ -55,14 +113,43 @@
       <div class="col-lg-1">
         <span> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, quod. </span>
       </div>
-      <div class="col-lg-3">
-        <textarea name="" id="" cols="10"
-          rows="10">Lorem ipsum dolor sit amet consecteturujiikhhhmjhhhh, adipisicing elit. Blanditiis, quod. </textarea>
+      <div class="col-lg-1">
+        <textarea name="" id="" cols="10" rows="10">
+          Lorem ipsum dolor sit amet consecteturujiikhhhmjhhhh, adipisicing elit. Blanditiis, quod. 
+        </textarea>
       </div>
       <div class="col-lg-4">
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, quod.
       </div>
     </div>
+    <img src="https://cdn.sportdepot.bg/files/products/HH-11157-597_01.jpg" alt="shoe" width="300px">
+    <div id="shadowDiv">
+      <span>I'm the shadow...</span>
+    </div>
+    <div style="border: 3px solid white; width: 800px; height: 500px;" class="p-2 mb-5">
+      <img src="https://cdn.sportdepot.bg/files/products/HH-11157-597_01.jpg" alt="shoe" width="200px">
+      <p>I'm on default position!</p>
+    </div>
+    <div style="border: 3px solid white; width: 800px; height: 500px;" class="p-2 mb-5">
+      <img src="https://cdn.sportdepot.bg/files/products/HH-11157-597_01.jpg" alt="shoe" width="200px"
+        id="positioningFixed">
+      <p>I'm on fixed position!</p>
+    </div>
+    <div style="border: 3px solid white; width: 800px; height: 500px;" class="p-2 mb-5">
+      <img src="https://cdn.sportdepot.bg/files/products/HH-11157-597_01.jpg" alt="shoe" width="400px"
+        id="positioningAbsolute">
+      <p>I'm on absolute position!</p>
+    </div>
+
+    <p style="width: 200px;margin-left: 200px;"> Lorem ipsum dolor sit amet,<img class="leftShoe"
+        src="https://cdn.sportdepot.bg/files/products/HH-11157-597_01.jpg" style="width: 50px;" /> consectetuer
+      adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi
+      enim<img src="https://cdn.sportdepot.bg/files/products/HH-11157-597_01.jpg" style="width: 50px;"
+        class="rightShoe" /> ad minim
+      veniam, quis nostrud
+      exerci tation ullamcorper suscipit lobortis nisl ut
+      aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
+      consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio...</p>
   </div>
 
 </body>
