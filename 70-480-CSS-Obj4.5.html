@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <title>Document</title>
+  <style>
+    a:link {
+      color: green;
+    }
+
+    a:hover {
+      color: red;
+    }
+
+    a:visited {
+      color: black;
+    }
+
+    input:required {
+      border: 2px solid red;
+    }
+
+    input[type$="box"]:checked {
+      display: none;
+    }
+
+    input:disabled {
+      background-color: blue;
+    }
+
+    input:enabled {
+      background-color: chocolate;
+    }
+
+    p:first-child {
+      color: rgb(12, 44, 222);
+    }
+
+    p:nth-child(1) {
+      color: rgb(173, 48, 48);
+    }
+
+    p::first-letter {
+      font-size: xx-large;
+    }
+
+    p::before {
+      content: '**';
+    }
+
+    p::after {
+      content: '****';
+    }
+
+    p[mytag]::first-line {
+      color: darkturquoise;
+    }
+
+    p {
+      font-family: serif;
+      color: green;
+    }
+
+    p {
+      color: purple !important;
+    }
+
+    p {
+      color: yellow;
+    }
+  </style>
+  <script>
+    window.onload = () => {
+
+    };
+
+  </script>
+</head>
+
+<body>
+  <div id="test">
+    <a href="">CLICK CLICK </a>
+    <br>
+    <a href="">CLICK CLICK </a>
+    <br>
+    <input type="checkbox">
+    <input type="checkbox">
+    <a href="">CLICK CLICK </a>
+    <br>
+    <a href="">CLICK CLICK </a>
+    <br>
+  </div>
+
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="text" required value="I'm required">
+  <input type="text" value="not required">
+  <input type="text" required value="I'm required">
+  <div>
+    <input type="text" disabled="disabled" value="I'm disabled :(">
+  </div>
+
+  <div>
+    <div>
+      <p>Lorem Ipsum ...</p>
+      <p>Lorem Ipsum ...</p>
+      <p>Lorem Ipsum ...</p>
+      <p mytag>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident adipisci vel, quas modi iure eos. Eos
+        quas
+        voluptate dolore sequi!</p>
+    </div>
+
+  </div>
+</body>
+
+</html>
