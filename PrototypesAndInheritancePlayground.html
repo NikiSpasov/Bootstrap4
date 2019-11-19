@@ -1,21 +1,35 @@
 <!DOCTYPE html>
+
 <head>
   <script src="./node_modules/jquery/dist/jquery.min.js"></script>
   <script>
 
-    window.onload = function() {
-      $.ajax({
-        url: ('/jsonTest.json'),
-        type: 'GET',
-        success: function (data) {
-          data = JSON.stringify(data);
-          var test = JSON.parse(data);
-          console.log(test)
-        },
-        error: function (error) {
-          alert(error.message);
-        }
-      });
+    function Person() {
+      name = "Ico",
+        age = 40
+    }
+
+    function Worker() { }
+
+    Worker.prototype = Person.prototype;
+
+    Person.prototype.SayName = function () {
+      console.log('My name is: ' + name)
+    }
+
+    Worker.prototype.SayName = function () {
+      console.log('I am a worker!');
+    }
+
+    window.onload = function () {
+     
+          var person = new Person();
+          var worker = new Worker();
+          console.log(Person.prototype.constructor.name);
+          console.log(person.__proto__);
+          person.SayName();
+          worker.SayName();
+
 
       // var xmlData = "<Person firstname='Rick' lastName='Delorme' hairColor='Brown'  eyeColor='Brown' / > ";
       // var xReq = new XMLHttpRequest();
@@ -31,8 +45,10 @@
       // req.send(null);
       // var jsonPerson = JSON.parse(req.responseText);
     }
-  </script> 
+  </script>
 </head>
+
 <body>
 </body>
+
 </html>
