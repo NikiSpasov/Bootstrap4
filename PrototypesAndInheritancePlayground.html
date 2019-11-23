@@ -4,47 +4,111 @@
   <script src="./node_modules/jquery/dist/jquery.min.js"></script>
   <script>
 
-    function Person() {
-      name = "Ico",
-        age = 40
-    }
+    // window.onload = function () {
 
-    function Worker() { }
+    //   function Person(name, age) {
+    //     this.name = name || 'person4e',
+    //     this.age = age
+    //   }
+    //   Person.prototype.SayName = function () {
+    //     console.log('My name is: ' + this.name)
+    //   }
 
-    Worker.prototype = Person.prototype;
+    //   function Worker(name, age, subject) {
+    //     Person.call(this, name, age)
+    //     this.subject = subject;
+    //   }
 
-    Person.prototype.SayName = function () {
-      console.log('My name is: ' + name)
-    }
+    //   console.log(Person.prototype.constructor)
 
-    Worker.prototype.SayName = function () {
-      console.log('I am a worker!');
-    }
+    //   Worker.prototype = Object.create(Person.prototype);
 
-    window.onload = function () {
-     
-          var person = new Person();
-          var worker = new Worker();
-          console.log(Person.prototype.constructor.name);
-          console.log(person.__proto__);
-          person.SayName();
-          worker.SayName();
+    //   Object.defineProperty(Worker.prototype, 'constructor', {
+    //     value: Worker,
+    //     enumerable: false,
+    //     writable: true
+    //   })
+
+    //   console.log(Worker.prototype.constructor)
+
+    //   Worker.prototype.SayName = function() {
+    //     console.log('hello from worker4etooo')
+    //   }
+
+    //   var worker = new Worker();
+    //   var person = new Person();
+    //   worker.SayName();
+    //   person.SayName();
+
+      //worker.SayName();
 
 
-      // var xmlData = "<Person firstname='Rick' lastName='Delorme' hairColor='Brown'  eyeColor='Brown' / > ";
-      // var xReq = new XMLHttpRequest();
-      // xReq.open("POST", "/ReceiveXMLData.aspx", false);
-      // xReq.responseType
-      // xReq.send(xmlData);
-      // var person = {
-      //   FirstName: "Rick",
-      //   HairColor: "Brown"
+      // function doSomething() { }
+      // // It does not matter how you declare the function, a
+      // //  function in JavaScript will always have a default
+      // //  prototype property.
+      // var doSomeInstancing = new doSomething();
+      // doSomething.prototype.foo = "bar"
+      // doSomeInstancing.prop = "some value"; // add a property onto the object
+
+      // console.log("doSomeInstancing.prop:      " + doSomeInstancing.prop); //some value
+      // console.log("doSomeInstancing.foo:       " + doSomeInstancing.foo); //bar
+      // console.log("doSomething.prop:           " + doSomething.prop); //undefined
+      // console.log("doSomething.foo:            " + doSomething.foo); //undefined
+      // console.log("doSomething.prototype.prop: " + doSomething.prototype.prop); //undefined
+      // console.log("doSomething.prototype.foo:  " + doSomething.prototype.foo); //bar
+
+      // function Graph() {
+      //   this.vertices = [];
+      //   this.edges = [];
+      // }
+
+      // Graph.prototype = {
+      //   addVertex: function (v) {
+      //     this.vertices.push(v);
+      //   }
       // };
-      // var req = new XMLHttpRequest();
-      // req.open("GET", "MyJsonData.json", false);
-      // req.send(null);
-      // var jsonPerson = JSON.parse(req.responseText);
-    }
+
+      // var g = new Graph();
+
+      // g.addVertex(1);
+
+      // console.log(g);
+
+      function Animal(name, age) {
+        this.name = name,
+        this.age = age,
+        this.makeSound = function() {
+          console.log('Animal sound....')
+        }
+        this.hello = function() {
+          console.log(`Hello, my name is ${this.name}`)
+        }
+      }
+
+      function Cat(name, age) {
+        Animal.call(this, name, age);
+        this.makeSound = function() {
+          console.log('meowww');
+        }
+      }
+
+      Cat.prototype = Object.create(Animal.prototype);
+
+      Cat.prototype.constructor = Cat;
+
+      var animal = new Animal('dog', 12);
+      var cat = new Cat('Puffy', 3);
+
+      animal.makeSound();
+      cat.makeSound();
+      animal.hello();
+      cat.hello();
+
+      console.log(Cat.prototype)
+      console.log(Animal)
+      console.log(Animal.prototype)
+    
   </script>
 </head>
 
