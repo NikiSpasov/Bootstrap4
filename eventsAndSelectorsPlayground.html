@@ -9,89 +9,251 @@
   <title>Document</title>
   <script>
 
+    (function fff() {
+      console.log('surprise!')
+    })()
 
 
     window.onload = function () {
+
       //alert(document.getElementById('test').nodeValue);
-      let a = $('#divId').text();
-      let b = $('#test').text();
-      var myButton = document.getElementById('btn');
-      var div1 = document.getElementById('div1');
-      var div2 = document.getElementById('div2');
-      var div3 = document.getElementById('div3');
+      // let a = $('#divId').text();
+      // let b = $('#test').text();
+      // var myButton = document.getElementById('btn');
+      // var div1 = document.getElementById('div1');
+      // var div2 = document.getElementById('div2');
+      // var div3 = document.getElementById('div3');
 
-      myButton.setAttribute('style', 'color:red');
-      myButton.addEventListener('click', clicked);
-   
-      div2.addEventListener('click', clicked2, true);
-         div1.addEventListener('click', clicked1, true);
-      div3.addEventListener('click', clicked3, true);
+      // myButton.setAttribute('style', 'color:red');
+      // myButton.addEventListener('click', clicked);
 
-      var event = new Event('myClick', {
-      });
-      window.dispatchEvent(event);
+      // div2.addEventListener('click', clicked2, true);
+      // div1.addEventListener('click', clicked1, true);
+      // div3.addEventListener('click', clicked3, true);
 
     }
 
-    function clicked() {
-      console.log('Clicked!')
-    }
+    // function clicked() {
+    //   console.log('Clicked!')
+    // }
 
-    function clicked1() {
-      console.log('Clicked div 1!')
-    }
+    // function clicked1() {
+    //   console.log('Clicked div 1!')
+    // }
 
-    function clicked2(e) {
-      console.log('Clicked div 2!')
-      //e.stopPropagation();
-    }
+    // function clicked2(e) {
+    //   console.log('Clicked div 2!')
+    //   //e.stopPropagation();
+    // }
 
-    function clicked3() {
-      console.log('Clicked div 3!')
-    }
+    // function clicked3() {
+    //   console.log('Clicked div 3!')
+    // }
 
-    var myEvent = new CustomEvent(
-      'anAction', 
-      {
-        detail: { description: 'desc of the event',
-                  timeOfEvent: new Date(),
-                  eventCode: 2 },
-        bubbles: true,
-        cancelable: true
-      }
-    )
+    // var myEvent = new CustomEvent(
+    //   'anAction',
+    //   {
+    //     detail: {
+    //       description: 'desc of the event',
+    //       timeOfEvent: new Date(),
+    //       eventCode: 2
+    //     },
+    //     bubbles: true,
+    //     cancelable: true
+    //   }
+    // )
 
-    document.addEventListener('anAction', function(){console.log('Hello from the custom event.')})
+    // document.addEventListener('anAction', function () { console.log('Hello from the custom event.') })
 
-    document.dispatchEvent(myEvent);
+    // document.dispatchEvent(myEvent);
 
 
 
   </script>
   <style>
-    div {
+    /* div {
       margin: 10px;
       padding: 10px;
       border: black 1px solid;
+      font-family: myFont;
+      font-style: italic;
     }
-    div::before {content: 'start';}
-    div::after {content: 'div4o div';}
-    div::first-line {color: blue;}
+
+    div.test {
+      border: 10px;
+      padding: 25px;
+      margin: 15px;
+      background-color: yellow;
+      border-style: solid;
+      border-color: green;
+    }
+
+    div::before {
+      content: 'start';
+    }
+
+    div::after {
+      content: 'div4o div';
+    }
+
+     div::first-line {
+      color: blue
+    }
+
+    div.test::first-line {
+      color: black;
+    }
+
+    a[href='http://microsoft.com']:hover:before {
+      content: " ("attr(href)") ";
+      background-color: burlywood;
+    }
+
+    a[href^='jpg']:hover {
+      background-color: cyan;
+    }
+
+    a[href$='jpg']:hover {
+      background-color: red;
+    }
+
+    a[data-linktype~='internalLink']:hover {
+      background-color: darkkhaki;
+    }
+
+    @font-face {
+      font-family: 'myFont';
+      src: url('../fonts/Boughies Demo.ttf');
+    } */
+
+    p {
+      margin: 0px;
+    }
+
+    div {
+      border: solid;
+      border-color: black;
+    }
+
+    #div1 {
+      background-color: yellow;
+    }
+
+    #div2 {
+      background-color: cyan;
+    }
+
+    #div3 {
+      background-color: lightpink;
+      float: left;
+      box-sizing: border-box;
+      width: 33%;
+    }
+
+    #div4 {
+      background-color: orange;
+      float: left;
+       box-sizing: border-box;
+      width: 34%;
+    }
+
+    #div5 {
+      background-color: lightblue;
+      float: left;
+       box-sizing: border-box;
+      width: 33%;
+
+    }
+
+    #div6 {
+      background-color: lightgray;
+      clear: both;
+    }
   </style>
 </head>
 </head>
 
 <body>
-  <div id='div1'>
+
+  <div id="div1">
+    <p>this is the first div</p>
+  </div>
+  <div id="div2">
+    <p>this is the second div</p>
+    <div id="div3">
+      <p>
+        this is the third div - Lorem ipsum dolor sit amet, salutandi
+        conceptam sea cu, eos id legimus percipit argumentum. Habeo
+        ipsum mandamus sit an, aeterno pertinax vim ad, et cibo
+        Key
+        Terms
+        Lesson 3: Working with CSS properties CHAPTER 4 179
+        atomorum mea. Ad vis illum porro disputando, ei eligendi
+        mandamus liberavisse sea. Sea debet comprehensam no, et
+        blandit officiis eos, ut per ubique abhorreant
+      </p>
+    </div>
+    <div id="div4">
+      <p>
+        this is the fourth div - Ignota impetus sadipscing sed ut,
+        sed ea alia menandri imperdiet. Te inani suscipiantur duo,
+        ad mei utroque accusata. Has veri dolores assueverit cu,
+        ad vocent fuisset expetenda quo. Vim id quot aliquid, ea
+        iisque gloriatur mei, eos ea ludus graeci melius. Saepe
+        accusam pericula cu usu, eos at alia everti.
+      </p>
+    </div>
+    <div id="div5">
+      <p>
+        this is the fifth div - Ei duo viderer legendos, fastidii
+        eligendi ad usu, audire accusamus te vel. Ullum referrentur
+        mei at, qui tota reque neglegentur ne. Ius eu minim
+        copiosae, malorum antiopam voluptaria te vel, nemore
+        eruditi fastidii nec te. Eos id prima ridens, prompta
+        alterum conclusionemque eu duo. Et vis elaboraret quaerendum.
+        Repudiare interesset his ad, vis facete commune ne.
+      </p>
+    </div>
+  </div>
+  <div id="div6">
+    <p>
+      this is the sixth div
+    </p>
+  </div>
+  <!-- <div id='div1'>
     FIRST DIV
     <div id='div2'>
       SECOND DIV
       <div id="div3">
-        THIRD DIV
+        ТРЕТИЯ ДИВ
         <input type="button" id='btn' value='CLICK ME'>
       </div>
     </div>
   </div>
+
+  <a href='http://contoso.com'>Link 1</a><br />
+
+  <a href='http://microsoft.com'>Link 3</a><br />
+  <br />
+
+  <a href='sales/default.html'>Link 1</a><br />
+
+  <a href='logo.jpg'>Link 2</a><br />
+
+  <a href='default.html'>Link 3</a><br />
+  <br><br>
+  <a href='http://contoso.com' data-linktype="externalLink zipFile">Link 1</a><br />
+  <a href='default.html' data-linktype="internalLink zipFile">Link 2</a><br />
+  <a href='http://microsoft.com/logo.jpg' data-linktype="externalLink imageFile">Link</a>
+  <div class='test'>
+    this is the third div - Lorem ipsum dolor sit amet, salutandi
+    conceptam sea cu, eos id legimus percipit argumentum. Habeo
+    ipsum mandamus sit an, aeterno pertinax vim ad, et cibo
+    atomorum mea. Ad vis illum porro disputando, ei eligendi
+    mandamus liberavisse sea. Sea debet comprehensam no, et
+    blandit officiis eos, ut per ubique abhorreant
+    Lesson 3: Working with CSS properties CHAPTER 4 177
+  </div>  -->
 
 </body>
 
