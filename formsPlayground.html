@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+  <title>Document</title>
+
+  <script>
+    $(document).ready(function () { $('#myButton').on('click', submitTheForm); });
+
+    function submitTheForm() {
+      var formData = $('#myForm').serialize();
+      var data = decodeURIComponent(formData);
+      $('#myForm').submit();
+    }
+  </script>
+
+  <style>
+
+
+  </style>
+</head>
+
+<body>
+  <form id="myForm">
+    <label for="fav">Favorite Car:</label>
+    <select name="favoriteCar" id="fav">
+      <option>Ford Fiesta</option>
+      <option value="Chevy">Chevrolet</option>
+      <option>BMW</option>
+    </select>
+    <br />
+    <label for="com">Comment:</label>
+    <input type="text" name="comment" id="com" />
+  </form>
+  <button id="myButton">Click Me</button>
+
+</body>
+
+</html>
