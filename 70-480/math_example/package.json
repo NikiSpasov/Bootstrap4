@@ -1,0 +1,21 @@
+{
+  "name": "math_example_spasov",
+  "version": "1.0.0",
+  "description": "Math opps",
+  "main": "./bin/main.js",
+  "bin": {
+    "math_example_spasov": "main.js"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo: 'Error: No Test availible' && exit 1"
+  },
+  "keywords": [
+    "math",
+    "opps"
+  ],
+  "author": "triset",
+  "license": "ISC"
+}
