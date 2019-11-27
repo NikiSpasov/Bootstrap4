@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title></title>
+  <script type="text/javascript" src="./scripts/jquery.min.js"></script>
+</head>
+
+<body>
+</body>
+
+<script>
+  $('ready', function () {
+
+    function fetchAjaxAsync(url, callback, errorCallback) {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+          if (xhr.status == 200) {
+            processResult();
+          } else {
+            errorCallback(new Error(xhr.statusText));
+          }
+        }
+      }
+      xhr.open(url, "GET", true);
+      xhr.send();
+    }
+
+    function timeoutAsync(milliseconds) {
+      var deferred = $.Deferred();
+      setTimeout(function () {
+        deferred.resolve();
+      }, milliseconds);
+      return deferred.promise();
+    }
+
+    function abcAsync() {
+      var promise = timeoutAsync(2000);
+      promise.always(() => alert('always!'));
+      promise.done(() => alert('done!'));
+      promise.fail(() => alert('Fail!'));
+
+      return promise;
+    }
+
+    //abcAsync();
+
+    function abcAsync2() {
+      var firstPromise = timeoutAsync(2000);
+      firstPromise.done(function () {
+        var secondPromise = timeoutAsync(3000);
+        secondPromise.done(function () {
+          firstPromise.done(function () { alert('done!') });
+        });
+      });
+      return firstPromise;
+    }
+
+    // abcAsync2();
+
+    function abcAsync3() {
+      var firstPromise = timeoutAsync(2000);
+      var secondPromise = firstPromise.pipe(function () {
+        return timeoutAsync(3000);
+      });
+      var thirdPromise = secondPromise.pipe(function () {
+        return timeoutAsync(1000);
+      });
+      var fourthPromise = thirdPromise.pipe(function () {
+        return timeoutAsync(1234);
+      });
+      fourthPromise.done(function () {
+        firstPromise.done(function () { alert('done!') });
+      });
+
+      return fourthPromise;
+    }
+ 
+    //abcAsync3();
+
+    function abcAsync4() {
+      var deferred = $.Deferred();
+      var count = 0;
+      var firstPromise = timeoutAsync(2000);
+      var secondPromise = timeoutAsync(3000);
+      var thirdPromise = timeoutAsync(1000);
+      var fourthPromise = timeoutAsync(1234);
+      firstPromise.always(function () { deferred.notify(++count); });
+      secondPromise.always(function () { deferred.notify(++count); });
+      thirdPromise.always(function () { deferred.notify(++count); });
+      fourthPromise.always(function () { deferred.notify(++count); });
+      $.when(firstPromise, secondPromise, thirdPromise, fourthPromise)
+        .then(function () { alert('done!'); deferred.resolve(); },
+          function () { deferred.reject(); });
+      return deferred.promise();
+    }
+
+    function runAbcAsync() {
+      var promise = abcAsync4();
+      promise.progress(function (msg) { alert(msg); });
+      return promise;
+    }
+
+    abcAsync4();
+
+    function abcAsyncConditional(includeThird) {
+      var firstPromise = timeoutAsync(2000);
+      var secondPromise = firstPromise.pipe(function () {
+        return timeoutAsync(3000);
+      });
+      var thirdPromise = includeThird ? secondPromise.pipe(function () {
+        return timeoutAsync(1000);
+      }) : secondPromise;
+      var fourthPromise = thirdPromise.pipe(function () {
+        return timeoutAsync(1234);
+      });
+      fourthPromise.done(function () {
+        firstPromise.done(function () { alert('done!') });
+      });
+      return fourthPromise;
+    }
+
+    function abcAsyncAsyncSynchro(includeThird) {
+      var deferred = $.Deferred();
+      var firstPromise = timeoutAsync(2000);
+      var secondPromise = timeoutAsync(3000);
+      var thirdPromise = includeThird ? timeoutAsync(1000) : $.when(); /*Remember that $.when() is used at the bottom of the function to indicate that all
+                                                                       asynchronous operations have completed, which creates a new promise*/
+      var fourthPromise = timeoutAsync(1234);
+      $.when(firstPromise, secondPromise, thirdPromise, fourthPromise)
+        .then(function () { alert('done!'); deferred.resolve(); },
+          function () { deferred.reject(); });
+      return deferred.promise();
+    }
+
+
+  })
+
+
+
+</script>
+
+</html>
