@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>Media</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="text/javascript" src="./scripts/jquery.min.js"></script>
+  <script type="text/javascript" src="./scripts/default.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+<style>
+
+</style>
+
+<body>
+  <div id="container">
+    <div id="hole1" class="hole">
+      <div id="item1" draggable="true" class="item">1</div>
+    </div>
+    <div id="hole2" class="hole">
+      <div id="item2" draggable="true" class="item">2</div>
+    </div>
+    <div id="hole3" class="hole">
+      <div id="item3" draggable="true" class="item">3</div>
+    </div>
+    <div id="hole4" class="hole"></div>
+
+  </div>
+  <div id="info"></div>
+
+  <p>What cars do you like?</p>
+  <ul id="carList">
+    <li draggable="true" data-value="car,Chevrolet">Chevrolet</li>
+    <li draggable="true" data-value="car,Ford">Ford</li>
+    <li draggable="true" data-value="car,BMW">BMW</li>
+  </ul>
+  <p>Drop your favorite cars below:</p>
+  <ul id="favoriteCars" style="min-height:100px;background-color:yellow;">
+  </ul>
+</body>
+
+<script>
+      function preventDefault(e) {
+          e.preventDefault();
+        }
+
+  window.onload = function () {
+
+
+    var $draggedItem;
+    $('#hole').on('dragenter', preventDefault);
+    $('#hole').on('dragover', preventDefault);
+    var items = Array(...document.getElementsByClassName('item'));
+    var target = document.getElementById('hole4');
+    var info = document.getElementById('info');
+    items.forEach(i => {
+      i.ondrag = function (e) {
+        info.textContent = i.textContent + ' Said: Влачат ме!';
+        $draggedItem = $(e.target);
+      };
+      i.ondragend = function () {
+        info.textContent = ""
+      }
+    })
+    target.ondragenter = function (e) {
+      e.preventDefault();
+      info.textContent += ' Влизассст!'
+    }
+
+    target.ondragover = function (e) {
+      e.preventDefault()
+      info.textContent += ' Info said: Over Me'
+    }
+
+    $('#hole4').on('drop', function (e) {
+
+      var hole = $(e.target);
+      debugger;
+      if (hole.hasClass('hole') && hole.children().length == 0) {
+        $draggedItem.detach();
+        $draggedItem.appendTo($(e.target));
+      }
+    })
+
+    $.event.props.push('dataTransfer');
+    $('#carList').on('dragstart', dragging);
+    $('#favoriteCars').on('dragenter', preventDefault);
+    $('#favoriteCars').on('dragover', preventDefault);
+    $('#favoriteCars').on('drop', dropItem);
+
+    function dragging(e) {
+      var val = e.target.getAttribute('data-value');
+      e.dataTransfer.setData('text', val);
+      e.dataTransfer.effectAllowed = 'copy';
+    }
+    function preventDefault(e) {
+      e.preventDefault();
+    }
+    function dropItem(e) {
+      var data = e.dataTransfer.getData('text').split(',');
+      if (data[0] == 'car') {
+        var li = document.createElement('li');
+        li.textContent = data[1];
+        e.target.appendChild(li);
+      }
+    }
+
+
+     
+
+  }
+
+
+</script>
+
+</html>

@@ -18,17 +18,18 @@
 </style>
 
 <body>
-  <div id='can'>
+  <!-- <div id='can'>
     <canvas id="canvas" width="700" height="500"></canvas>
-  </div>
-
+  </div> -->
+  <img src="./images/car.svg" alt="car">
 </body>
 
 <script>
   $('document').ready(function () {
     //drawSomething();
     //drawUsingCssColor();
-    drawGradient()
+   drawText()
+   //drawImage()
   });
 
   function drawSomething() {
@@ -157,6 +158,45 @@
         ctx.strokeRect(180, 180, 50, 50);
       }
 
+      function drawArc() {
+          var canvas = document.getElementById('canvas')
+          , ctx = canvas.getContext('2d');
+          ctx.strokeStyle = 'blue';
+          ctx.fillStyle = 'yellow';
+          ctx.lineWidth = 5;
+          ctx.beginPath();
+          ctx.arc(400, 300, 100, 0, 1.5 * Math.PI);
+          ctx.fill();
+          ctx.stroke();
+        }
+
+  function drawText() {
+    var canvas = document.getElementById('canvas')
+      , ctx = canvas.getContext('2d');
+    ctx.strokeStyle = 'magenta';
+    ctx.fillStyle = 'yellow';
+    ctx.lineWidth = 2;
+    ctx.font = "bold 50pt TimesNewRoman";
+    ctx.beginPath();
+    ctx.moveTo(100, 300);
+    ctx.lineTo(700, 300);
+    ctx.stroke();
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'bottom';
+    ctx.strokeStyle = 'blue';
+    ctx.fillText("Hello", 400, 300);
+    ctx.strokeText("Hello", 400, 300);
+}
+
+  function drawImage() {
+    var canvas = document.getElementById('canvas')
+      , ctx = canvas.getContext('2d');
+    var img = new Image();
+    img.src = "../../glozzom/img/google.jpg";
+    img.onload = function () {
+      ctx.drawImage(img, 0, -40, 200, 300);
+    }
+  }
 
 
 
