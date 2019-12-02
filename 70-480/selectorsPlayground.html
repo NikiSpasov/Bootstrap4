@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="./async/public/scripts/jquery.min.js"></script>
+  <title>Document</title>
+
+  <style>
+    div {
+      border: 2px solid gray;
+      padding: 20px;
+      margin: 20px;
+    }
+
+
+    p {
+      border: 1px solid green;
+      padding: 10px;
+      margin: 20px;
+    }
+  </style>
+
+  <script>
+    $(document).ready(function () {
+          console.log('Ready!')
+          $('#btn\\.btn').on('click', function (e) {
+            $(this).css("color", 'red')
+            $(this).val('CLICKED!')
+            console.log(e);
+      })
+    })
+
+  </script>
+</head>
+<body>
+  <div class="parent1">I'm PARENT DIV1
+
+    <input type="button" id='btn.btn' value="CLICK ME">
+
+
+   <p>I'm a paragrpah1 in PARENTDiv1</p>
+    <div class="child1"> I'm a CHILD1 DIV
+      <div class="grandChild1">
+        I'm GRANDCHILD1
+        <p class="p p1" att='test.pdfff'>I'm a paragrpah1 in grandchild1</p>
+        <p class="p p1">I'm a paragrpah1's sibling in grandchild1</p>
+        <section>
+          <p>nested Paragrah in section tag</p>
+        </section>
+      </div>
+    </div>
+  </div>
+  <p>I'm a Paragraph sibling - some level of divs</p>
+  <p>I'm a Paragraph2 sibling - some level of divs</p>
+  <div class="parent2">I'm PARENT DIV2
+    <p>I'm a paragrpah1 in PARENTDiv2</p>
+    <div class="child2"> I'm a CHILD1 DIV2
+      <div class="grandChild2">
+        I'm GRANDCHILD1
+        <p class="p p2">I'm a paragrpah2 in grandchild2</p>
+        <p class="p p2">I'm a paragrpah2's sibling in grandchild2</p>
+      </div>
+    </div>
+  </div>
+
+  
+</body>
+</html>
